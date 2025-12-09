@@ -2,3 +2,15 @@ span.numpost {
     font-size: .8rem;
     font-weight: 600;
 }
+
+.post-tag {
+    padding: .5rem 1rem;
+    border: 1px solid grey;
+    margin-right: .4rem;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

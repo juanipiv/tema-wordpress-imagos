@@ -119,3 +119,34 @@
         register_sidebar( $args );
     }
     add_action('widgets_init', 'register_widgets_zone');
+
+    /**
+     * Get post categories with boostrap theme classes embed --> en caso de que el tema de bootstrap tenga animaciones personalizadas como las del profe
+     * @param  $post_id      Integer   Post ID
+     * @return $categories   String    Post Categroties Links
+     */
+
+    function get_post_categories_boot( $post_id ) {
+        $cats = get_the_category( $post_id ); // devuelve una coleccion de objetos tipo categoria
+
+        foreach ($cats as $cat) {
+            $categories .= '<a href="'. get_category_link($cat->term_id) .'" data-text"'. $cat->name .'" class=""> '. $cat->name .' </a>';
+        }
+
+        return $categories;
+    }
+
+    /**
+     * Retrive the post tags
+     * @param $post_id    Integer    Post ID 
+     * @tag_list          String     Tags Links
+     */
+    function get_post_tag_list( $post_id ) {
+        $tags = wp_get_post_tags($post_id); // Devuelve una coleccion de objetos tag del post
+
+        foreach ( $tags as $tag ) {
+            $tag_list .= '<a href="'. get_tag_link($tag->term_id) .'" class="post-tag">'.$tag->name.'</a>';
+        }
+
+        return $tag_list;
+    }
